@@ -37,13 +37,33 @@ class _Content extends StatelessWidget {
               () => const Center(child: Text('Data tidak ditemukan')),
               (show) => CustomScrollView(
                 slivers: [
-                  SliverAppBar.large(
-                    title: Text(show.name),
-                    expandedHeight: 300,
+                  SliverAppBar(
+                    expandedHeight: 500,
+                    pinned: true,
+                    iconTheme: const IconThemeData(color: Colors.white),
                     flexibleSpace: FlexibleSpaceBar(
-                      background: Image.network(
-                        show.originalImage,
-                        fit: BoxFit.cover,
+                      background: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          Image.network(
+                            show.originalImage,
+                            fit: BoxFit.cover,
+                            alignment: Alignment.topCenter,
+                          ),
+                          const DecoratedBox(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Colors.transparent,
+                                  Colors.black,
+                                ],
+                                stops: [0.7, 1.0],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -53,43 +73,74 @@ class _Content extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Wrap(
-                            spacing: 8,
-                            children: [
-                              Chip(
-                                label: Text(show.language),
-                                avatar: const Icon(
-                                  Icons.category_outlined,
-                                  size: 18,
+                          Text(
+                            show.name,
+                            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
                                 ),
+                          ),
+                          const SizedBox(height: 8),
+                          Row(
+                            children: [
+                              const Icon(Icons.star, color: Colors.amber, size: 24),
+                              const SizedBox(width: 4),
+                              Text(
+                                show.rating.toStringAsFixed(1),
+                                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
                               ),
-                              Chip(
-                                label: Text(show.status),
-                                avatar: const Icon(
-                                  Icons.location_on_outlined,
-                                  size: 18,
+                              const SizedBox(width: 16),
+                              Text(
+                                show.language,
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              const Spacer(),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 4,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.blue.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                child: Text(
+                                  show.status,
+                                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                                        color: Colors.blue[800],
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 24),
-                          Text(
-                            'BaHan-bahan',
-                            style: Theme.of(context).textTheme.titleLarge
-                                ?.copyWith(fontWeight: FontWeight.bold),
+                          const SizedBox(height: 16),
+                          Wrap(
+                            spacing: 8,
+                            runSpacing: 8,
+                            children: show.genres
+                                .map((genre) => Chip(
+                                      label: Text(genre),
+                                      visualDensity: VisualDensity.compact,
+                                      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                                      side: BorderSide.none,
+                                    ))
+                                .toList(),
                           ),
                           const SizedBox(height: 24),
                           Text(
-                            'Cara Memasak',
-                            style: Theme.of(context).textTheme.titleLarge
-                                ?.copyWith(fontWeight: FontWeight.bold),
+                            'Overview',
+                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            show.overview,
-                            style: Theme.of(
-                              context,
-                            ).textTheme.bodyMedium?.copyWith(height: 1.5),
+                            show.overview.replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ''),
+                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                  height: 1.5,
+                                ),
                           ),
                           const SizedBox(height: 32),
                         ],

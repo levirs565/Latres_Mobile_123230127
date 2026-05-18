@@ -48,6 +48,7 @@ class ShowsCubit extends Cubit<ShowsState> {
           .map((key, value) => MapEntry(key, value.length))
           .entries
           .sortedBy((entry) => entry.value)
+          .reversed
           .map((entry) => some(entry.key))
           .prepend(none())
           .toList();
