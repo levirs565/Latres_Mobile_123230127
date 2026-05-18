@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lat_res/domain/recipe.dart';
 import 'package:lat_res/domain/tvshow.dart';
 import 'package:lat_res/ui/recipe_detail/page.dart';
+import 'package:lat_res/ui/show_detail/page.dart';
 
 class TVShowCard extends StatelessWidget {
   const TVShowCard({
@@ -20,8 +21,8 @@ class TVShowCard extends StatelessWidget {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
-        onTap: () => {},
-            // Navigator.of(context).push(RecipeDetailPage.route(id: show.id)),
+        onTap: () =>
+            Navigator.of(context).push(ShowDetailPage.route(id: show.id)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [

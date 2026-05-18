@@ -28,8 +28,32 @@ class TVShowDataSource implements TVShowRepository {
           .toList();
       yield right(shows);
     } catch (e, s) {
-      print('Exception details: $e');
-      print('Stack trace:\n$s');
+      // print('Exception details: $e');
+      // print('Stack trace:\n$s');
+      yield left(e.toString());
+    }
+  }
+
+  @override
+  Stream<Either<String, TVShowDetail>> getTVShowDetail(int id) async* {
+    try {
+      final result = await _tvMazeClient.getShowById(id);
+      final show = TVShowDetail(
+        id: result.id,
+        name: result.name,
+        rating: result.rating.average ?? 0,
+        originalImage: result.image.original,
+        mediumImage: result.image.medium,
+        language: result.language,
+        isFavorite: false,
+        status: result.status,
+        genres: result.genres,
+        overview: result.summary
+      );
+      yield right(show);
+    } catch (e, s) {
+      // print('Exception details: $e');
+      // print('Stack trace:\n$s');
       yield left(e.toString());
     }
   }
