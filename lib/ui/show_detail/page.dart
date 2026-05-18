@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'cubit.dart';
 import 'state.dart';
 
@@ -51,20 +52,17 @@ class _Content extends StatelessWidget {
                             alignment: Alignment.topCenter,
                             errorBuilder: (context, error, stackTrace) =>
                                 Image.network(
-                              show.mediumImage,
-                              fit: BoxFit.cover,
-                              alignment: Alignment.topCenter,
-                            ),
+                                  show.mediumImage,
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.topCenter,
+                                ),
                           ),
                           const DecoratedBox(
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
-                                colors: [
-                                  Colors.transparent,
-                                  Colors.black,
-                                ],
+                                colors: [Colors.transparent, Colors.black],
                                 stops: [0.7, 1.0],
                               ),
                             ),
@@ -81,20 +79,22 @@ class _Content extends StatelessWidget {
                         children: [
                           Text(
                             show.name,
-                            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                            style: Theme.of(context).textTheme.headlineMedium
+                                ?.copyWith(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),
                           Row(
                             children: [
-                              const Icon(Icons.star, color: Colors.amber, size: 24),
+                              const Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                                size: 24,
+                              ),
                               const SizedBox(width: 4),
                               Text(
                                 show.rating.toStringAsFixed(1),
-                                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                style: Theme.of(context).textTheme.titleLarge
+                                    ?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(width: 16),
                               Text(
@@ -113,7 +113,8 @@ class _Content extends StatelessWidget {
                                 ),
                                 child: Text(
                                   show.status,
-                                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                                  style: Theme.of(context).textTheme.labelLarge
+                                      ?.copyWith(
                                         color: Colors.blue[800],
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -126,31 +127,36 @@ class _Content extends StatelessWidget {
                             spacing: 8,
                             runSpacing: 8,
                             children: show.genres
-                                .map((genre) => Chip(
-                                      label: Text(genre),
-                                      visualDensity: VisualDensity.compact,
-                                      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                                      side: BorderSide.none,
-                                    ))
+                                .map(
+                                  (genre) => Chip(
+                                    label: Text(genre),
+                                    visualDensity: VisualDensity.compact,
+                                    backgroundColor: Theme.of(
+                                      context,
+                                    ).colorScheme.primaryContainer,
+                                    side: BorderSide.none,
+                                  ),
+                                )
                                 .toList(),
                           ),
                           const SizedBox(height: 24),
                           Text(
                             'Overview',
-                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                            style: Theme.of(context).textTheme.titleLarge
+                                ?.copyWith(fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 8),
-                          Text(
-                            show.overview.replaceAll(
-                                RegExp(r'<[^>]*>|&lt;[^&gt;]*&gt;|&amp;[^;]+;'),
-                                ''),
-                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                  height: 1.5,
-                                ),
+                          Html(
+                            data: show.overview,
+                            style: {
+                              "p": Style.fromTextStyle(
+                                Theme.of(
+                                  context,
+                                ).textTheme.bodyLarge!.copyWith(height: 1.5)
+                              ),
+                            },
                           ),
-                          const SizedBox(height: 32),
+                          const SizedBox(height: 96),
                         ],
                       ),
                     ),
