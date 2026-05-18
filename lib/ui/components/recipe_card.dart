@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lat_res/domain/recipe.dart';
-import 'package:lat_res/ui/recipe_detail/page.dart';
 
 class RecipeCard extends StatelessWidget {
   const RecipeCard({
@@ -19,8 +18,8 @@ class RecipeCard extends StatelessWidget {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
-        onTap: () =>
-            Navigator.of(context).push(RecipeDetailPage.route(id: recipe.id)),
+        onTap: () => {},
+        // Navigator.of(context).push(RecipeDetailPage.route(id: recipe.id)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -47,7 +46,9 @@ class RecipeCard extends StatelessWidget {
                         constraints: const BoxConstraints(),
                         padding: const EdgeInsets.all(4),
                         icon: Icon(
-                          recipe.isFavorite ? Icons.favorite : Icons.favorite_border,
+                          recipe.isFavorite
+                              ? Icons.favorite
+                              : Icons.favorite_border,
                           color: recipe.isFavorite ? Colors.red : Colors.grey,
                           size: 20,
                         ),
@@ -65,8 +66,8 @@ class RecipeCard extends StatelessWidget {
                   Text(
                     recipe.meal,
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      fontWeight: FontWeight.bold,
+                    ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lat_res/domain/recipe.dart';
 import 'package:lat_res/domain/tvshow.dart';
-import 'package:lat_res/ui/recipe_detail/page.dart';
 import 'package:lat_res/ui/show_detail/page.dart';
 
 class TVShowCard extends StatelessWidget {

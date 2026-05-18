@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lat_res/ui/recipes/page.dart';
 import 'package:lat_res/ui/favorite/page.dart';
 import 'package:lat_res/ui/shows/page.dart';
 
