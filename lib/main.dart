@@ -11,11 +11,14 @@ import 'package:lat_res/data/local/session.dart';
 import 'package:lat_res/data/local/user.dart';
 import 'package:lat_res/data/recipe.dart';
 import 'package:lat_res/data/remote/meal.dart';
+import 'package:lat_res/data/remote/tvmaze.dart';
 import 'package:lat_res/data/session.dart';
+import 'package:lat_res/data/tvshow.dart';
 import 'package:lat_res/data/user.dart';
 import 'package:lat_res/domain/auth_service.dart';
 import 'package:lat_res/domain/recipe.dart';
 import 'package:lat_res/domain/session.dart';
+import 'package:lat_res/domain/tvshow.dart';
 import 'package:lat_res/domain/user.dart';
 import 'package:lat_res/ui/login/page.dart';
 import 'package:lat_res/ui/main.dart';
@@ -52,6 +55,10 @@ void main() async {
             favoriteDataSource: FavoriteRecipeLocalDataSource(),
             sessionDataSource: sessionLocalDataSource,
           ),
+        ),
+        RepositoryProvider<TVShowRepository>(
+          create: (context) =>
+              TVShowDataSource(tvMazeClient: TVMazeClient(Dio())),
         ),
       ],
       child: const MyApp(),

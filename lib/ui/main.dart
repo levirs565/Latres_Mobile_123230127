@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lat_res/ui/recipes/page.dart';
 import 'package:lat_res/ui/favorite/page.dart';
+import 'package:lat_res/ui/shows/page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -15,7 +16,7 @@ class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = const [
-    RecipesPage(),
+    ShowsPage(),
     FavoritePage(),
   ];
 
@@ -37,7 +38,7 @@ class _MainPageState extends State<MainPage> {
           NavigationDestination(
             icon: Icon(Icons.restaurant_menu_outlined),
             selectedIcon: Icon(Icons.restaurant_menu),
-            label: 'Recipes',
+            label: 'Beranda',
           ),
           NavigationDestination(
             icon: Icon(Icons.favorite_border),
