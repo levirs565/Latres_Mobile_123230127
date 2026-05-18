@@ -28,19 +28,12 @@ class _Content extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Daftar TV Show'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () => context.read<AuthCubit>().onLogout(),
-            icon: const Icon(Icons.logout),
-            tooltip: 'Logout',
-          ),
-        ],
       ),
       body: BlocBuilder<ShowsCubit, ShowsState>(
         builder: (context, state) {
           return Column(
             children: [
-              state.language.fold(
+              state.languages.fold(
                 () => const SizedBox.shrink(),
                 (categories) => SizedBox(
                   height: 60,

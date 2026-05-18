@@ -9,15 +9,15 @@ abstract class ShowsState with _$ShowsState {
   const ShowsState._();
 
   const factory ShowsState({
-    required Option<List<Option<String>>> language,
+    required Option<List<Option<String>>> languages,
     required Option<String> selectedLanguage,
     required Option<List<TVShow>> shows,
     required Option<String> error,
   }) = _ShowsState;
 
-  bool get isCategoriesLoading => language.isNone() && error.isNone();
+  bool get isLanguagesLoading => languages.isNone() && error.isNone();
 
   bool get isShowsLoading => shows.isNone() && error.isNone();
 
-  bool get isLoading => isCategoriesLoading || isShowsLoading;
+  bool get isLoading => isLanguagesLoading || isShowsLoading;
 }

@@ -20,7 +20,7 @@ class ShowsCubit extends Cubit<ShowsState> {
       super(
         const ShowsState(
           shows: Option.none(),
-          language: Option.none(),
+          languages: Option.none(),
           selectedLanguage: Option.none(),
           error: Option.none(),
         ),
@@ -34,7 +34,7 @@ class ShowsCubit extends Cubit<ShowsState> {
       language,
     ) {
       var baseState = ShowsState(
-        language: none(),
+        languages: none(),
         selectedLanguage: language,
         shows: none(),
         error: list?.getLeft() ?? none(),
@@ -55,7 +55,7 @@ class ShowsCubit extends Cubit<ShowsState> {
 
       final languageNullable = language.toNullable();
       return baseState.copyWith(
-        language: some(languages),
+        languages: some(languages),
         shows: some(
           right
               .filter(

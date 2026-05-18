@@ -26,13 +26,6 @@ class _Content extends StatelessWidget {
         appBar: AppBar(
           title: const Text('TV Show Favorit'),
           centerTitle: true,
-          actions: [
-            IconButton(
-              onPressed: () => context.read<AuthCubit>().onLogout(),
-              icon: const Icon(Icons.logout),
-              tooltip: 'Logout',
-            ),
-          ],
         ),
         body: BlocBuilder<FavoriteCubit, FavoriteState>(
           builder: (context, state) {

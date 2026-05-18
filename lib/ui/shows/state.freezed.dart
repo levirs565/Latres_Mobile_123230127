@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ShowsState {
 
- Option<List<Option<String>>> get language; Option<String> get selectedLanguage; Option<List<TVShow>> get shows; Option<String> get error;
+ Option<List<Option<String>>> get languages; Option<String> get selectedLanguage; Option<List<TVShow>> get shows; Option<String> get error;
 /// Create a copy of ShowsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ShowsStateCopyWith<ShowsState> get copyWith => _$ShowsStateCopyWithImpl<ShowsSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowsState&&(identical(other.language, language) || other.language == language)&&(identical(other.selectedLanguage, selectedLanguage) || other.selectedLanguage == selectedLanguage)&&(identical(other.shows, shows) || other.shows == shows)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowsState&&(identical(other.languages, languages) || other.languages == languages)&&(identical(other.selectedLanguage, selectedLanguage) || other.selectedLanguage == selectedLanguage)&&(identical(other.shows, shows) || other.shows == shows)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,language,selectedLanguage,shows,error);
+int get hashCode => Object.hash(runtimeType,languages,selectedLanguage,shows,error);
 
 @override
 String toString() {
-  return 'ShowsState(language: $language, selectedLanguage: $selectedLanguage, shows: $shows, error: $error)';
+  return 'ShowsState(languages: $languages, selectedLanguage: $selectedLanguage, shows: $shows, error: $error)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $ShowsStateCopyWith<$Res>  {
   factory $ShowsStateCopyWith(ShowsState value, $Res Function(ShowsState) _then) = _$ShowsStateCopyWithImpl;
 @useResult
 $Res call({
- Option<List<Option<String>>> language, Option<String> selectedLanguage, Option<List<TVShow>> shows, Option<String> error
+ Option<List<Option<String>>> languages, Option<String> selectedLanguage, Option<List<TVShow>> shows, Option<String> error
 });
 
 
@@ -62,9 +62,9 @@ class _$ShowsStateCopyWithImpl<$Res>
 
 /// Create a copy of ShowsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? language = null,Object? selectedLanguage = null,Object? shows = null,Object? error = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? languages = null,Object? selectedLanguage = null,Object? shows = null,Object? error = null,}) {
   return _then(_self.copyWith(
-language: null == language ? _self.language : language // ignore: cast_nullable_to_non_nullable
+languages: null == languages ? _self.languages : languages // ignore: cast_nullable_to_non_nullable
 as Option<List<Option<String>>>,selectedLanguage: null == selectedLanguage ? _self.selectedLanguage : selectedLanguage // ignore: cast_nullable_to_non_nullable
 as Option<String>,shows: null == shows ? _self.shows : shows // ignore: cast_nullable_to_non_nullable
 as Option<List<TVShow>>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
@@ -153,10 +153,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Option<List<Option<String>>> language,  Option<String> selectedLanguage,  Option<List<TVShow>> shows,  Option<String> error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Option<List<Option<String>>> languages,  Option<String> selectedLanguage,  Option<List<TVShow>> shows,  Option<String> error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ShowsState() when $default != null:
-return $default(_that.language,_that.selectedLanguage,_that.shows,_that.error);case _:
+return $default(_that.languages,_that.selectedLanguage,_that.shows,_that.error);case _:
   return orElse();
 
 }
@@ -174,10 +174,10 @@ return $default(_that.language,_that.selectedLanguage,_that.shows,_that.error);c
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Option<List<Option<String>>> language,  Option<String> selectedLanguage,  Option<List<TVShow>> shows,  Option<String> error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Option<List<Option<String>>> languages,  Option<String> selectedLanguage,  Option<List<TVShow>> shows,  Option<String> error)  $default,) {final _that = this;
 switch (_that) {
 case _ShowsState():
-return $default(_that.language,_that.selectedLanguage,_that.shows,_that.error);case _:
+return $default(_that.languages,_that.selectedLanguage,_that.shows,_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +194,10 @@ return $default(_that.language,_that.selectedLanguage,_that.shows,_that.error);c
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Option<List<Option<String>>> language,  Option<String> selectedLanguage,  Option<List<TVShow>> shows,  Option<String> error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Option<List<Option<String>>> languages,  Option<String> selectedLanguage,  Option<List<TVShow>> shows,  Option<String> error)?  $default,) {final _that = this;
 switch (_that) {
 case _ShowsState() when $default != null:
-return $default(_that.language,_that.selectedLanguage,_that.shows,_that.error);case _:
+return $default(_that.languages,_that.selectedLanguage,_that.shows,_that.error);case _:
   return null;
 
 }
@@ -209,10 +209,10 @@ return $default(_that.language,_that.selectedLanguage,_that.shows,_that.error);c
 
 
 class _ShowsState extends ShowsState {
-  const _ShowsState({required this.language, required this.selectedLanguage, required this.shows, required this.error}): super._();
+  const _ShowsState({required this.languages, required this.selectedLanguage, required this.shows, required this.error}): super._();
   
 
-@override final  Option<List<Option<String>>> language;
+@override final  Option<List<Option<String>>> languages;
 @override final  Option<String> selectedLanguage;
 @override final  Option<List<TVShow>> shows;
 @override final  Option<String> error;
@@ -227,16 +227,16 @@ _$ShowsStateCopyWith<_ShowsState> get copyWith => __$ShowsStateCopyWithImpl<_Sho
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShowsState&&(identical(other.language, language) || other.language == language)&&(identical(other.selectedLanguage, selectedLanguage) || other.selectedLanguage == selectedLanguage)&&(identical(other.shows, shows) || other.shows == shows)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShowsState&&(identical(other.languages, languages) || other.languages == languages)&&(identical(other.selectedLanguage, selectedLanguage) || other.selectedLanguage == selectedLanguage)&&(identical(other.shows, shows) || other.shows == shows)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,language,selectedLanguage,shows,error);
+int get hashCode => Object.hash(runtimeType,languages,selectedLanguage,shows,error);
 
 @override
 String toString() {
-  return 'ShowsState(language: $language, selectedLanguage: $selectedLanguage, shows: $shows, error: $error)';
+  return 'ShowsState(languages: $languages, selectedLanguage: $selectedLanguage, shows: $shows, error: $error)';
 }
 
 
@@ -247,7 +247,7 @@ abstract mixin class _$ShowsStateCopyWith<$Res> implements $ShowsStateCopyWith<$
   factory _$ShowsStateCopyWith(_ShowsState value, $Res Function(_ShowsState) _then) = __$ShowsStateCopyWithImpl;
 @override @useResult
 $Res call({
- Option<List<Option<String>>> language, Option<String> selectedLanguage, Option<List<TVShow>> shows, Option<String> error
+ Option<List<Option<String>>> languages, Option<String> selectedLanguage, Option<List<TVShow>> shows, Option<String> error
 });
 
 
@@ -264,9 +264,9 @@ class __$ShowsStateCopyWithImpl<$Res>
 
 /// Create a copy of ShowsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? language = null,Object? selectedLanguage = null,Object? shows = null,Object? error = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? languages = null,Object? selectedLanguage = null,Object? shows = null,Object? error = null,}) {
   return _then(_ShowsState(
-language: null == language ? _self.language : language // ignore: cast_nullable_to_non_nullable
+languages: null == languages ? _self.languages : languages // ignore: cast_nullable_to_non_nullable
 as Option<List<Option<String>>>,selectedLanguage: null == selectedLanguage ? _self.selectedLanguage : selectedLanguage // ignore: cast_nullable_to_non_nullable
 as Option<String>,shows: null == shows ? _self.shows : shows // ignore: cast_nullable_to_non_nullable
 as Option<List<TVShow>>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lat_res/ui/favorite/page.dart';
+import 'package:lat_res/ui/profile/page.dart';
 import 'package:lat_res/ui/shows/page.dart';
 
 class MainPage extends StatefulWidget {
@@ -17,6 +18,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _pages = const [
     ShowsPage(),
     FavoritePage(),
+    ProfilePage(),
   ];
 
   @override
@@ -35,14 +37,19 @@ class _MainPageState extends State<MainPage> {
         },
         destinations: const [
           NavigationDestination(
-            icon: Icon(Icons.restaurant_menu_outlined),
-            selectedIcon: Icon(Icons.restaurant_menu),
-            label: 'Beranda',
+            icon: Icon(Icons.movie_filter_outlined),
+            selectedIcon: Icon(Icons.movie_filter),
+            label: 'Shows',
           ),
           NavigationDestination(
             icon: Icon(Icons.favorite_border),
             selectedIcon: Icon(Icons.favorite),
             label: 'Favorites',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.person_outline),
+            selectedIcon: Icon(Icons.person),
+            label: 'Profil',
           ),
         ],
       ),
