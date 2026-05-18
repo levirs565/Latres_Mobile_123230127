@@ -26,7 +26,7 @@ class _Content extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Daftar Resep'),
+        title: const Text('Daftar TV Show'),
         centerTitle: true,
         actions: [
           IconButton(
@@ -52,7 +52,7 @@ class _Content extends StatelessWidget {
                         const SizedBox(width: 8),
                     itemBuilder: (context, index) {
                       final language = categories[index];
-                      final isSelected = state.selectedLanguage == language;;
+                      final isSelected = state.selectedLanguage == language;
                       return FilterChip(
                         label: Text(language.getOrElse(() => "All")),
                         selected: isSelected,
@@ -79,7 +79,7 @@ class _Content extends StatelessWidget {
                       ) {
                         if (shows.isEmpty) {
                           return const Center(
-                            child: Text('Tidak ada pertunjukan ditemukan!'),
+                            child: Text('Tidak ada TV show ditemukan!'),
                           );
                         }
 
@@ -87,11 +87,11 @@ class _Content extends StatelessWidget {
                           padding: const EdgeInsets.all(16),
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 12,
-                                mainAxisSpacing: 12,
-                                childAspectRatio: 0.8,
-                              ),
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 12,
+                            childAspectRatio: 0.7,
+                          ),
                           itemCount: shows.length,
                           itemBuilder: (context, index) {
                             final show = shows[index];

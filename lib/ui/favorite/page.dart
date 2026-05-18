@@ -24,7 +24,7 @@ class _Content extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Resep Favorit'),
+          title: const Text('TV Show Favorit'),
           centerTitle: true,
           actions: [
             IconButton(
@@ -37,7 +37,7 @@ class _Content extends StatelessWidget {
         body: BlocBuilder<FavoriteCubit, FavoriteState>(
           builder: (context, state) {
             if (state.shows.isEmpty) {
-              return const Center(child: Text('Belum ada resep favorit'));
+              return const Center(child: Text('Belum ada TV show favorit'));
             }
 
             return GridView.builder(
@@ -46,7 +46,7 @@ class _Content extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
-                childAspectRatio: 0.8,
+                childAspectRatio: 0.7,
               ),
               itemCount: state.shows.length,
               itemBuilder: (context, index) {

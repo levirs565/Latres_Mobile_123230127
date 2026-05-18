@@ -36,12 +36,12 @@ class FavoriteTVShowLocalDataSource {
         .map((event) => event.value ?? List.empty());
   }
 
-  Future<void> toggleFavorite(String username, LocalTVShow recipe) async {
+  Future<void> toggleFavorite(String username, LocalTVShow show) async {
     final favorites = (await getFavorites(username)).toList(growable: true);
-    if (favorites.any((element) => element.id == recipe.id)) {
-      favorites.removeWhere((element) => element.id == recipe.id);
+    if (favorites.any((element) => element.id == show.id)) {
+      favorites.removeWhere((element) => element.id == show.id);
     } else {
-      favorites.add(recipe);
+      favorites.add(show);
     }
     await _box.put(username, favorites);
   }

@@ -17,7 +17,7 @@ abstract class ShowsState with _$ShowsState {
 
   bool get isCategoriesLoading => language.isNone() && error.isNone();
 
-  bool get isRecipesLoading => shows.isNone() && error.isNone();
+  bool get isShowsLoading => shows.isNone() && error.isNone();
 
-  bool get isLoading => isCategoriesLoading || isRecipesLoading;
+  bool get isLoading => isCategoriesLoading || isShowsLoading;
 }

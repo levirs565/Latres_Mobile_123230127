@@ -49,6 +49,12 @@ class _Content extends StatelessWidget {
                             show.originalImage,
                             fit: BoxFit.cover,
                             alignment: Alignment.topCenter,
+                            errorBuilder: (context, error, stackTrace) =>
+                                Image.network(
+                              show.mediumImage,
+                              fit: BoxFit.cover,
+                              alignment: Alignment.topCenter,
+                            ),
                           ),
                           const DecoratedBox(
                             decoration: BoxDecoration(
@@ -137,7 +143,9 @@ class _Content extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            show.overview.replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ''),
+                            show.overview.replaceAll(
+                                RegExp(r'<[^>]*>|&lt;[^&gt;]*&gt;|&amp;[^;]+;'),
+                                ''),
                             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                   height: 1.5,
                                 ),
@@ -192,7 +200,7 @@ class _Content extends StatelessWidget {
               state.show.map((r) => r.isFavorite).toNullable() ?? false;
           return state.show.fold(
             () => const SizedBox.shrink(),
-            (recipe) => FloatingActionButton(
+            (show) => FloatingActionButton(
               onPressed: () =>
                   context.read<ShowDetailCubit>().onToggleFavorite(),
               child: state.isFavoriteLoading
