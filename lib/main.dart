@@ -6,17 +6,14 @@ import 'package:hive_ce_flutter/adapters.dart';
 import 'package:lat_res/cubit/auih.dart';
 import 'package:lat_res/cubit/auth_state.dart';
 import 'package:lat_res/data/local/hive_registrar.g.dart';
-import 'package:lat_res/data/local/recipe.dart';
 import 'package:lat_res/data/local/session.dart';
+import 'package:lat_res/data/local/tvshow.dart';
 import 'package:lat_res/data/local/user.dart';
-import 'package:lat_res/data/recipe.dart';
-import 'package:lat_res/data/remote/meal.dart';
 import 'package:lat_res/data/remote/tvmaze.dart';
 import 'package:lat_res/data/session.dart';
 import 'package:lat_res/data/tvshow.dart';
 import 'package:lat_res/data/user.dart';
 import 'package:lat_res/domain/auth_service.dart';
-import 'package:lat_res/domain/recipe.dart';
 import 'package:lat_res/domain/session.dart';
 import 'package:lat_res/domain/tvshow.dart';
 import 'package:lat_res/domain/user.dart';
@@ -28,7 +25,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapters();
   await UserLocalDataSource.init();
-  await FavoriteRecipeLocalDataSource.init();
+  await FavoriteTVShowLocalDataSource.init();
 
   final sessionLocalDataSource = SessionLocalDataSource();
 
@@ -49,16 +46,12 @@ void main() async {
             sessionRepository: context.read(),
           ),
         ),
-        RepositoryProvider<RecipeRepository>(
-          create: (context) => RecipeDataSource(
-            client: TheMealDBClient(Dio()),
-            favoriteDataSource: FavoriteRecipeLocalDataSource(),
+        RepositoryProvider<TVShowRepository>(
+          create: (context) => TVShowDataSource(
+            tvMazeClient: TVMazeClient(Dio()),
+            favoriteDataSource: FavoriteTVShowLocalDataSource(),
             sessionDataSource: sessionLocalDataSource,
           ),
-        ),
-        RepositoryProvider<TVShowRepository>(
-          create: (context) =>
-              TVShowDataSource(tvMazeClient: TVMazeClient(Dio())),
         ),
       ],
       child: const MyApp(),

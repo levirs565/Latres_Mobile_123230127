@@ -38,39 +38,39 @@ class LocalUserAdapter extends TypeAdapter<LocalUser> {
           typeId == other.typeId;
 }
 
-class LocalRecipeAdapter extends TypeAdapter<LocalRecipe> {
+class LocalTVShowAdapter extends TypeAdapter<LocalTVShow> {
   @override
-  final typeId = 2;
+  final typeId = 3;
 
   @override
-  LocalRecipe read(BinaryReader reader) {
+  LocalTVShow read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return LocalRecipe(
-      id: fields[0] as String,
-      meal: fields[1] as String,
-      mealThumb: fields[2] as String,
-      area: fields[3] as String?,
-      country: fields[4] as String,
+    return LocalTVShow(
+      id: (fields[0] as num).toInt(),
+      name: fields[1] as String,
+      rating: (fields[2] as num).toDouble(),
+      mediumImage: fields[3] as String,
+      language: fields[4] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, LocalRecipe obj) {
+  void write(BinaryWriter writer, LocalTVShow obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.meal)
+      ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.mealThumb)
+      ..write(obj.rating)
       ..writeByte(3)
-      ..write(obj.area)
+      ..write(obj.mediumImage)
       ..writeByte(4)
-      ..write(obj.country);
+      ..write(obj.language);
   }
 
   @override
@@ -79,7 +79,7 @@ class LocalRecipeAdapter extends TypeAdapter<LocalRecipe> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is LocalRecipeAdapter &&
+      other is LocalTVShowAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

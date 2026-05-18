@@ -60,15 +60,15 @@ class ShowDetailCubit extends Cubit<ShowDetailState> {
 
     emit(snapshotState.copyWith(isFavoriteLoading: true));
     final show = snapshotState.show.toNullable()!;
-    // await _recipeRepository.toggleFavorite(
-    //   Recipe(
-    //     id: recipe.id,
-    //     meal: recipe.meal,
-    //     mealThumb: recipe.mealThumb,
-    //     area: recipe.area,
-    //     country: recipe.country,
-    //     isFavorite: !recipe.isFavorite,
-    //   ),
-    // );
+    await _repository.toggleFavorite(
+      TVShow(
+        id: show.id,
+        name: show.name,
+        rating: show.rating,
+        mediumImage: show.mediumImage,
+        language: show.language,
+        isFavorite: !show.isFavorite,
+      ),
+    );
   }
 }

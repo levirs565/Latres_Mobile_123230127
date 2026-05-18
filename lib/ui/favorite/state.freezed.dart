@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$FavoriteState {
 
- List<Recipe> get recipes;
+ List<TVShow> get shows;
 /// Create a copy of FavoriteState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $FavoriteStateCopyWith<FavoriteState> get copyWith => _$FavoriteStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FavoriteState&&const DeepCollectionEquality().equals(other.recipes, recipes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FavoriteState&&const DeepCollectionEquality().equals(other.shows, shows));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(recipes));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(shows));
 
 @override
 String toString() {
-  return 'FavoriteState(recipes: $recipes)';
+  return 'FavoriteState(shows: $shows)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $FavoriteStateCopyWith<$Res>  {
   factory $FavoriteStateCopyWith(FavoriteState value, $Res Function(FavoriteState) _then) = _$FavoriteStateCopyWithImpl;
 @useResult
 $Res call({
- List<Recipe> recipes
+ List<TVShow> shows
 });
 
 
@@ -62,10 +62,10 @@ class _$FavoriteStateCopyWithImpl<$Res>
 
 /// Create a copy of FavoriteState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? recipes = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? shows = null,}) {
   return _then(_self.copyWith(
-recipes: null == recipes ? _self.recipes : recipes // ignore: cast_nullable_to_non_nullable
-as List<Recipe>,
+shows: null == shows ? _self.shows : shows // ignore: cast_nullable_to_non_nullable
+as List<TVShow>,
   ));
 }
 
@@ -150,10 +150,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Recipe> recipes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<TVShow> shows)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _FavoriteState() when $default != null:
-return $default(_that.recipes);case _:
+return $default(_that.shows);case _:
   return orElse();
 
 }
@@ -171,10 +171,10 @@ return $default(_that.recipes);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Recipe> recipes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<TVShow> shows)  $default,) {final _that = this;
 switch (_that) {
 case _FavoriteState():
-return $default(_that.recipes);case _:
+return $default(_that.shows);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +191,10 @@ return $default(_that.recipes);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Recipe> recipes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<TVShow> shows)?  $default,) {final _that = this;
 switch (_that) {
 case _FavoriteState() when $default != null:
-return $default(_that.recipes);case _:
+return $default(_that.shows);case _:
   return null;
 
 }
@@ -206,14 +206,14 @@ return $default(_that.recipes);case _:
 
 
 class _FavoriteState implements FavoriteState {
-  const _FavoriteState({required final  List<Recipe> recipes}): _recipes = recipes;
+  const _FavoriteState({required final  List<TVShow> shows}): _shows = shows;
   
 
- final  List<Recipe> _recipes;
-@override List<Recipe> get recipes {
-  if (_recipes is EqualUnmodifiableListView) return _recipes;
+ final  List<TVShow> _shows;
+@override List<TVShow> get shows {
+  if (_shows is EqualUnmodifiableListView) return _shows;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_recipes);
+  return EqualUnmodifiableListView(_shows);
 }
 
 
@@ -227,16 +227,16 @@ _$FavoriteStateCopyWith<_FavoriteState> get copyWith => __$FavoriteStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FavoriteState&&const DeepCollectionEquality().equals(other._recipes, _recipes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FavoriteState&&const DeepCollectionEquality().equals(other._shows, _shows));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_recipes));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_shows));
 
 @override
 String toString() {
-  return 'FavoriteState(recipes: $recipes)';
+  return 'FavoriteState(shows: $shows)';
 }
 
 
@@ -247,7 +247,7 @@ abstract mixin class _$FavoriteStateCopyWith<$Res> implements $FavoriteStateCopy
   factory _$FavoriteStateCopyWith(_FavoriteState value, $Res Function(_FavoriteState) _then) = __$FavoriteStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<Recipe> recipes
+ List<TVShow> shows
 });
 
 
@@ -264,10 +264,10 @@ class __$FavoriteStateCopyWithImpl<$Res>
 
 /// Create a copy of FavoriteState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? recipes = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? shows = null,}) {
   return _then(_FavoriteState(
-recipes: null == recipes ? _self._recipes : recipes // ignore: cast_nullable_to_non_nullable
-as List<Recipe>,
+shows: null == shows ? _self._shows : shows // ignore: cast_nullable_to_non_nullable
+as List<TVShow>,
   ));
 }
 

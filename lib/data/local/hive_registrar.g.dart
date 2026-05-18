@@ -7,14 +7,14 @@ import 'package:lat_res/data/local/hive_adapters.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
-    registerAdapter(LocalRecipeAdapter());
+    registerAdapter(LocalTVShowAdapter());
     registerAdapter(LocalUserAdapter());
   }
 }
 
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
-    registerAdapter(LocalRecipeAdapter());
+    registerAdapter(LocalTVShowAdapter());
     registerAdapter(LocalUserAdapter());
   }
 }

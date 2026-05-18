@@ -35,4 +35,8 @@ abstract interface class TVShowRepository {
   Stream<Either<String, List<TVShow>>> getTVShowList();
 
   Stream<Either<String, TVShowDetail>> getTVShowDetail(int id);
+
+  Stream<List<TVShow>> getFavoriteListStream();
+
+  Future<Either<String, Unit>> toggleFavorite(TVShow show);
 }

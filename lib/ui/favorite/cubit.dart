@@ -1,21 +1,19 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lat_res/domain/recipe.dart';
+import 'package:lat_res/domain/tvshow.dart';
 
 import 'state.dart';
 
 class FavoriteCubit extends Cubit<FavoriteState> {
-  final RecipeRepository _recipeRepository;
+  final TVShowRepository _repository;
   StreamSubscription? _favoriteSubscription;
 
-  FavoriteCubit({required RecipeRepository recipeRepository})
-    : _recipeRepository = recipeRepository,
-      super(const FavoriteState(recipes: [])) {
-    _favoriteSubscription = _recipeRepository.getFavoriteListStream().listen((
-      event,
-    ) {
-      emit(state.copyWith(recipes: event));
+  FavoriteCubit({required TVShowRepository repository})
+    : _repository = repository,
+      super(const FavoriteState(shows: [])) {
+    _favoriteSubscription = _repository.getFavoriteListStream().listen((event) {
+      emit(state.copyWith(shows: event));
     });
   }
 
@@ -25,7 +23,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     return super.close();
   }
 
-  void onToggleFavorite(Recipe recipe) async {
-    await _recipeRepository.toggleFavorite(recipe);
+  void onToggleFavorite(TVShow show) async {
+    await _repository.toggleFavorite(show);
   }
 }

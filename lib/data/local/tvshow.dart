@@ -1,42 +1,42 @@
 import 'package:hive_ce/hive.dart';
 
-class LocalRecipe {
-  final String id;
-  final String meal;
-  final String mealThumb;
-  final String? area;
-  final String country;
+class LocalTVShow {
+  final int id;
+  final String name;
+  final double rating;
+  final String mediumImage;
+  final String language;
 
-  LocalRecipe({
+  LocalTVShow({
     required this.id,
-    required this.meal,
-    required this.mealThumb,
-    required this.area,
-    required this.country,
+    required this.name,
+    required this.rating,
+    required this.mediumImage,
+    required this.language,
   });
 }
 
 const _boxName = "favorites";
 
-class FavoriteRecipeLocalDataSource {
+class FavoriteTVShowLocalDataSource {
   final Box _box = Hive.box(_boxName);
 
   static Future<void> init() async {
     await Hive.openBox(_boxName);
   }
 
-  Future<List<LocalRecipe>> getFavorites(String username) async {
-    return _box.get(username)?.cast<LocalRecipe>() ?? List.empty();
+  Future<List<LocalTVShow>> getFavorites(String username) async {
+    return _box.get(username)?.cast<LocalTVShow>() ?? List.empty();
   }
 
-  Stream<List<LocalRecipe>> getFavoritesStream(String username) async* {
+  Stream<List<LocalTVShow>> getFavoritesStream(String username) async* {
     yield await getFavorites(username);
     yield* _box
         .watch(key: username)
         .map((event) => event.value ?? List.empty());
   }
 
-  Future<void> toggleFavorite(String username, LocalRecipe recipe) async {
+  Future<void> toggleFavorite(String username, LocalTVShow recipe) async {
     final favorites = (await getFavorites(username)).toList(growable: true);
     if (favorites.any((element) => element.id == recipe.id)) {
       favorites.removeWhere((element) => element.id == recipe.id);
